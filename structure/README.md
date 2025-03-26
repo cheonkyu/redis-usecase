@@ -12,3 +12,26 @@ Sorted
 - HASH - RANDFIELD
 - SET - SRANDMEMBER
 - SORTED SET - ZRANDMEMBER
+
+## DAU 구하기
+
+레디스의 비트맵을 이용
+
+![DAU](https://spoolblog.wordpress.com/wp-content/uploads/2011/11/union.png)
+
+1천만명의 DAU를 측정하는 법
+
+`redisTemplate`에서 `bitcount` 지원하지 않아 커스텀을 해줘야함
+
+```java
+  public Long bitcount(final String key) {
+    return redisTemplate.execute(new RedisCallback<Long>() {
+
+      @Override
+      public Long doInRedis(RedisConnection redisConnection) throws DataAccessException {
+
+        return redisConnection.bitCount(key.getBytes());
+      }
+    });
+  }
+```

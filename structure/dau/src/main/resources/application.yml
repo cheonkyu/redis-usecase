@@ -1,0 +1,10 @@
+server:
+  port: 5001
+
+spring:
+  application:
+    name: dau
+  data:
+    redis:
+      host: localhost
+      port: 6379
