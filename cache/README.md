@@ -19,6 +19,11 @@
 
 ## 메모리 관리
 
+`--maxmemory-policy allkeys-lru` 다음 옵션 적용
+["redis-server", "--appendonly", "no", "--maxmemory", "500mb", "--maxmemory-policy", "allkeys-lru"]
+
+https://redis.io/chat?q=maxmemory-policy&page=1
+
 ### Noeviction
 
 레디스에 데이터가 가득 차더라도 임의로 데이터를 삭제하지 않고데이터를 저장할 수 없다는 에러를 반환
